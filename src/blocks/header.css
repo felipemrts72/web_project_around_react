@@ -1,0 +1,155 @@
+.header {
+  margin: 45px auto;
+  max-width: 880px;
+  width: 100%;
+}
+.header__logo {
+  margin: 0 auto;
+  height: 74px;
+  border-bottom: solid 1px rgba(84, 84, 84, 0.7);
+}
+
+.header__profile {
+  box-sizing: border-box;
+  display: flex;
+  margin-top: 40px;
+  height: 120px;
+  align-items: center;
+}
+
+.header__avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 120px;
+  height: 120px;
+}
+
+.header__avatar:hover {
+  opacity: 0.2;
+}
+.header__avatar-edit {
+  background: url(../images/edit__avatar.png) center no-repeat;
+  cursor: pointer;
+}
+.header__profile-edit {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto 0 30px;
+  object-fit: contain;
+  box-sizing: border-box;
+}
+.header__wrap {
+  display: flex;
+  max-width: 415px;
+  height: 39px;
+}
+.header__title {
+  font-size: 42px;
+  line-height: 48px;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: -1px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 373px;
+}
+
+.header__subtitle {
+  align-self: flex-start;
+  margin: 0;
+  margin-top: 16px;
+  font-size: 18px;
+  line-height: 22px;
+  max-width: 373px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.header__edit-button {
+  max-width: 24px;
+  width: 100%;
+  margin: 15px 0 0 18px;
+  cursor: pointer;
+}
+
+.header__edit-button:hover {
+  opacity: 0.6;
+}
+
+.header__add {
+  max-width: 150px;
+  width: 100%;
+  max-height: 50px;
+  height: 100%;
+  cursor: pointer;
+}
+
+.header__add:hover {
+  opacity: 0.6;
+}
+@media screen and (max-width: 875px) {
+  .header {
+    max-width: 720px;
+  }
+
+  .header__title {
+    font-size: 32px;
+    line-height: 38px;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 412px;
+    margin-bottom: 0;
+  }
+
+  .header__logo {
+    width: 100%;
+    height: 56px;
+  }
+
+  .header__logo-item {
+    margin: 0 167px 0 27px;
+    width: 126px;
+  }
+  .header__profile {
+    flex-direction: column;
+    max-width: 282px;
+    align-items: center;
+    margin-top: 42px;
+  }
+  .header__profile-edit {
+    margin: 0 auto;
+  }
+  .header__wrap {
+    max-width: 224px;
+    margin: 30px auto 0;
+    height: 22px;
+  }
+  .header__title {
+    font-size: 22px;
+    line-height: 26px;
+    height: 22px;
+    text-align: center;
+  }
+  .header__edit-button {
+    margin: 4px 0 0 10px;
+    width: 18px;
+  }
+
+  .header__subtitle {
+    margin: 14px auto 36px;
+  }
+  .header__add {
+    width: 282px;
+    height: 50px;
+    margin: 0 auto;
+  }
+}

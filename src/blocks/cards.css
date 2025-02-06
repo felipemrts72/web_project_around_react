@@ -1,0 +1,125 @@
+.cards {
+  max-width: 880px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 361px);
+  row-gap: 17px;
+  column-gap: 20px;
+}
+.cards__item {
+  max-width: 100%;
+  min-height: 361px;
+  object-fit: cover;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+}
+.cards__image {
+  border-radius: 10px 10px 0 0;
+  max-width: 282px;
+  width: 100%;
+  max-height: 282px;
+  height: 100%;
+}
+.cards__trash {
+  position: absolute;
+  align-self: flex-end;
+  margin: 15px 15px 0 0;
+  cursor: pointer;
+}
+.cards__trash:hover {
+  opacity: 0.6;
+}
+.cards__desc {
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 246px;
+  height: 23px;
+  margin: 25px 0 0;
+}
+
+.cards__title {
+  width: 100%;
+  height: 23px;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29.05px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.cards__like {
+  width: 21px;
+  height: 19px;
+  margin: 5px 3px 1px 0;
+  cursor: pointer;
+}
+
+.cards__like:hover {
+  opacity: 0.6;
+}
+.cards__like_active {
+  background-image: url(../images/active__liked.png);
+}
+
+.cards__zoom {
+  display: none;
+  max-width: 80vw;
+  max-height: 80vw;
+  margin: 0 auto;
+  flex-direction: column;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.cards__zoom_open {
+  display: flex;
+}
+
+.cards__zoom-close {
+  align-self: flex-end;
+  text-align: right;
+  width: 5%;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.cards__zoom-image {
+  display: block;
+  min-width: 300px;
+  max-width: 75vw;
+  max-height: 75vh;
+  margin: auto;
+}
+
+.cards__zoom-title {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+@media screen and (max-width: 875px) {
+  .cards {
+    max-width: 581px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 361px);
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .cards {
+    margin-top: 36px;
+    max-width: 282px;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 361px);
+  }
+}
