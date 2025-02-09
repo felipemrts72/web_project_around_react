@@ -2,16 +2,13 @@
   max-width: 515px;
   width: 100%;
   margin: 0 auto;
-  display: none;
+  display: flex;
   flex-direction: column;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-}
-.popup_opened {
-  display: flex;
 }
 .popup__close {
   border: none;

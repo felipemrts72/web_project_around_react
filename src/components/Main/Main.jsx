@@ -1,15 +1,4 @@
-import { useState } from "react";
-import Popup from "./components/Popup/Popup.jsx";
-import NewCard from "./components/Popup/components/NewCard/NewCard";
-import EditAvatar from "./components/Popup/components/EditAvatar/EditAvatar";
-import EditProfile from "./components/Popup/components/EditProfile/EditProfile";
-
 function Main() {
-  const [popup, setPopup] = useState(null);
-  const newCardPopup = { title: "New Card", children: <NewCard /> };
-  const editAvatarPopup = { title: "New Card", children: <EditAvatar /> };
-  const editProfilePopup = { title: "New Card", children: <EditProfile /> };
-
   function handleOpenPopup(popup) {
     setPopup(popup);
   }
@@ -45,12 +34,6 @@ function Main() {
           <img src="#" alt="#" className="cards__zoom-image" />
           <h2 className="cards__zoom-title"></h2>
         </div>
-
-        {popup && (
-          <Popup onClose={handleClosePopup} title={popup.title}>
-            {popup.children}
-          </Popup>
-        )}
       </main>
     </>
   );

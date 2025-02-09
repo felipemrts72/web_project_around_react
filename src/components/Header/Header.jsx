@@ -1,4 +1,27 @@
+import { useState } from "react";
+
+import Popup from "./components/Popup/Popup.jsx";
+import NewCard from "./components/Popup/components/NewCard/NewCard";
+import EditAvatar from "./components/Popup/components/EditAvatar/EditAvatar";
+import EditProfile from "./components/Popup/components/EditProfile/EditProfile";
+
 function Header({ logo, editButton, addLocal }) {
+  const [popup, setPopup] = useState(null);
+  const newCardPopup = { title: "Novo cartão", children: <NewCard /> };
+  const editAvatarPopup = { title: "Editar avatar", children: <EditAvatar /> };
+  const editProfilePopup = {
+    title: "Editar perfil",
+    children: <EditProfile />,
+  };
+
+  function handleOpenPopup(popup) {
+    setPopup(popup);
+  }
+
+  function handleClosePopup() {
+    setPopup(null);
+  }
+
   return (
     <header className="header">
       <div className="header__logo">
@@ -14,6 +37,7 @@ function Header({ logo, editButton, addLocal }) {
             src="#"
             alt="Foto de perfil do usuário"
             className="header__avatar"
+            onClick={() => handleOpenPopup(editAvatarPopup)}
           />
         </div>
         <div className="header__profile-edit">
@@ -23,6 +47,7 @@ function Header({ logo, editButton, addLocal }) {
               src={editButton}
               className="header__edit-button"
               alt="Um botão com uma canela, simbolizando a edição!"
+              onClick={() => handleOpenPopup(editProfilePopup)}
             />
           </div>
           <p className="header__subtitle">Explorador</p>
@@ -31,8 +56,14 @@ function Header({ logo, editButton, addLocal }) {
           src={addLocal}
           className="header__add"
           alt="Um botão com um simbolo de mais, simbolizando a adição de mais fotos!"
+          onClick={() => handleOpenPopup(newCardPopup)}
         />
       </div>
+      {popup && (
+        <Popup onClose={handleClosePopup} title={popup.title}>
+          {popup.children}
+        </Popup>
+      )}
     </header>
   );
 }
