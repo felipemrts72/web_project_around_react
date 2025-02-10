@@ -1,6 +1,4 @@
 import { useState } from "react";
-import logo from "../images/logo.png";
-import addLocal from "../images/Add_Button.png";
 
 //Components
 import Header from "./Header/Header.jsx";

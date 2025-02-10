@@ -1,16 +1,16 @@
-export default function Card({ trash, like }) {
+export default function Card(props) {
+  const { name, link } = props.card;
+
   return (
-    <li className="cards__item">
+    <li className="cards__item" key={props._id}>
       <img
-        src={trash}
         alt="lixeira que representa que irá apagar o local selecionado"
         className="cards__trash"
       />
-      <img src="#" alt="" className="cards__image" />
+      <img src={link} alt="" className="cards__image" />
       <div className="cards__desc">
-        <h2 className="cards__title"></h2>
-        <img
-          src={like}
+        <h2 className="cards__title">{name}</h2>
+        <button
           className="cards__like"
           alt="Um botão com um coração, simbolizando o curtir!"
         />

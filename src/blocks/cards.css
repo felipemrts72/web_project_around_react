@@ -30,6 +30,9 @@
   align-self: flex-end;
   margin: 15px 15px 0 0;
   cursor: pointer;
+  content: url(../images/Trash.png);
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .cards__trash:hover {
   opacity: 0.6;
@@ -55,10 +58,14 @@
   overflow: hidden;
 }
 .cards__like {
-  width: 21px;
-  height: 19px;
-  margin: 5px 3px 1px 0;
+  width: 22px;
+  height: 22px;
   cursor: pointer;
+  background: url(../images/like_button.png);
+  padding: 0;
+  border: none;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .cards__like:hover {
