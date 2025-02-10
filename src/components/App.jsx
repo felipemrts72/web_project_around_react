@@ -1,6 +1,5 @@
 import { useState } from "react";
 import logo from "../images/logo.png";
-import editButton from "../images/Edit_Button.png";
 import addLocal from "../images/Add_Button.png";
 
 //Components
@@ -14,7 +13,7 @@ function App() {
   return (
     <>
       <div className="page">
-        <Header logo={logo} editButton={editButton} addLocal={addLocal} />
+        <Header />
         <Main />
         <Footer />
       </div>

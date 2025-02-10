@@ -5,7 +5,7 @@ import NewCard from "./components/Popup/components/NewCard/NewCard";
 import EditAvatar from "./components/Popup/components/EditAvatar/EditAvatar";
 import EditProfile from "./components/Popup/components/EditProfile/EditProfile";
 
-function Header({ logo, editButton, addLocal }) {
+function Header() {
   const [popup, setPopup] = useState(null);
   const newCardPopup = { title: "Novo cartão", children: <NewCard /> };
   const editAvatarPopup = { title: "Editar avatar", children: <EditAvatar /> };
@@ -26,7 +26,6 @@ function Header({ logo, editButton, addLocal }) {
     <header className="header">
       <div className="header__logo">
         <img
-          src={logo}
           alt="Logo do site, ao logo dos estados unidos"
           className="header__logo-item"
         />
@@ -43,8 +42,7 @@ function Header({ logo, editButton, addLocal }) {
         <div className="header__profile-edit">
           <div className="header__wrap">
             <h1 className="header__title">Jacques Costeau</h1>
-            <img
-              src={editButton}
+            <button
               className="header__edit-button"
               alt="Um botão com uma canela, simbolizando a edição!"
               onClick={() => handleOpenPopup(editProfilePopup)}
@@ -52,8 +50,7 @@ function Header({ logo, editButton, addLocal }) {
           </div>
           <p className="header__subtitle">Explorador</p>
         </div>
-        <img
-          src={addLocal}
+        <button
           className="header__add"
           alt="Um botão com um simbolo de mais, simbolizando a adição de mais fotos!"
           onClick={() => handleOpenPopup(newCardPopup)}
