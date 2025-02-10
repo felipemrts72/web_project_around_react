@@ -3,7 +3,7 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 361px);
+  grid-template-rows: repeat(1, 362px);
   row-gap: 17px;
   column-gap: 20px;
 }
@@ -49,7 +49,6 @@
 
 .cards__title {
   width: 100%;
-  height: 23px;
   font-size: 24px;
   font-weight: 900;
   line-height: 29.05px;
@@ -127,6 +126,6 @@
     margin-top: 36px;
     max-width: 282px;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(6, 361px);
+    grid-template-rows: repeat(1, 361px);
   }
 }
