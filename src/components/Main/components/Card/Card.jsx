@@ -1,5 +1,7 @@
 export default function Card(props) {
   const { name, link } = props.card;
+  const { handleOpenPopup } = props;
+  const imageComponent = { title: false };
 
   return (
     <li className="cards__item" key={props._id}>
@@ -7,7 +9,12 @@ export default function Card(props) {
         alt="lixeira que representa que irá apagar o local selecionado"
         className="cards__trash"
       />
-      <img src={link} alt="" className="cards__image" />
+      <img
+        src={link}
+        alt=""
+        className="cards__image"
+        onClick={handleOpenPopup()}
+      />
       <div className="cards__desc">
         <h2 className="cards__title">{name}</h2>
         <button

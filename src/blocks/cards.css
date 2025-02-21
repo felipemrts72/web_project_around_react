@@ -75,7 +75,7 @@
 }
 
 .cards__zoom {
-  display: none;
+  display: flex;
   max-width: 80vw;
   max-height: 80vw;
   margin: 0 auto;

@@ -1,8 +1,11 @@
-export default function ImagePopup() {
+export default function ImagePopup(props) {
+  const { name, link } = props;
+  // console.log(props);
+
   return (
     <>
-      <img src="" alt="" />
-      <h3></h3>
+      <img src={link} alt="" className="cards__zoom-image" />
+      <h3 className="cards__zoom-title">{name}</h3>
     </>
   );
 }

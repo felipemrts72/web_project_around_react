@@ -9,7 +9,7 @@
   cursor: pointer;
 }
 
-.popup__wrap {
+.popup__content {
   max-width: 515px;
   width: 100%;
   margin: 0 auto;
@@ -37,6 +37,14 @@
   width: 100%;
   margin: 0 auto;
   background-color: white;
+}
+.popup__block_content_image {
+  border-radius: none;
+  background-color: none;
+  margin: auto;
+  max-height: 75vh;
+  max-width: 75vw;
+  min-width: 300px;
 }
 .popup__title {
   align-self: flex-start;
