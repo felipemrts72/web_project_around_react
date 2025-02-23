@@ -5,7 +5,6 @@ import Popup from "./components/Popup/Popup.jsx";
 import NewCard from "./components/Popup/components/NewCard/NewCard";
 import EditAvatar from "./components/Popup/components/EditAvatar/EditAvatar";
 import EditProfile from "./components/Popup/components/EditProfile/EditProfile";
-import ImagePopup from "./components/ImagePopup/ImagePopup";
 
 function Main() {
   const [popup, setPopup] = useState(null);
@@ -15,8 +14,6 @@ function Main() {
     title: "Editar perfil",
     children: <EditProfile />,
   };
-
-  <ImagePopup />;
 
   function handleOpenPopup(popup) {
     setPopup(popup);
@@ -43,7 +40,6 @@ function Main() {
       createdAt: "2019-07-05T08:11:58.324Z",
     },
   ];
-  console.log(cards);
 
   return (
     <main className="content">
@@ -77,7 +73,7 @@ function Main() {
         {cards.map((card) => (
           <Card key={card._id} card={card} handleOpenPopup={handleOpenPopup} />
         ))}
-      </section>{" "}
+      </section>
       {popup && (
         <Popup onClose={handleClosePopup} title={popup.title}>
           {popup.children}

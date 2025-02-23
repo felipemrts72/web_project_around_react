@@ -79,6 +79,33 @@
   align-self: center;
 }
 
+.popup__zoom {
+  display: flex;
+  max-width: 80vw;
+  max-height: 80vw;
+  margin: 0 auto;
+  flex-direction: column;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.popup__zoom-image {
+  display: block;
+  min-width: 300px;
+  max-width: 75vw;
+  max-height: 75vh;
+  margin: auto;
+}
+
+.popup__zoom-title {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: normal;
+}
+
 @media screen and (max-width: 660px) {
   .popup__wrap {
     max-width: 282px;

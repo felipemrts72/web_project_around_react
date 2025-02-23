@@ -74,45 +74,6 @@
   background-image: url(../images/active__liked.png);
 }
 
-.cards__zoom {
-  display: flex;
-  max-width: 80vw;
-  max-height: 80vw;
-  margin: 0 auto;
-  flex-direction: column;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-}
-
-.cards__zoom_open {
-  display: flex;
-}
-
-.cards__zoom-close {
-  align-self: flex-end;
-  text-align: right;
-  width: 5%;
-  margin-bottom: 15px;
-  cursor: pointer;
-}
-
-.cards__zoom-image {
-  display: block;
-  min-width: 300px;
-  max-width: 75vw;
-  max-height: 75vh;
-  margin: auto;
-}
-
-.cards__zoom-title {
-  margin-top: 10px;
-  font-size: 12px;
-  font-weight: normal;
-}
-
 @media screen and (max-width: 875px) {
   .cards {
     max-width: 581px;

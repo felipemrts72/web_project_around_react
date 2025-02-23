@@ -1,7 +1,12 @@
+import ImagePopup from "../ImagePopup/ImagePopup";
+
 export default function Card(props) {
   const { name, link } = props.card;
   const { handleOpenPopup } = props;
-  const imageComponent = { title: false };
+  const imageComponent = {
+    title: false,
+    children: <ImagePopup card={(name, link)} />,
+  };
 
   return (
     <li className="cards__item" key={props._id}>
@@ -13,7 +18,8 @@ export default function Card(props) {
         src={link}
         alt=""
         className="cards__image"
-        onClick={handleOpenPopup()}
+        onClick={() => handleOpenPopup(imageComponent)}
+        // onClick={}
       />
       <div className="cards__desc">
         <h2 className="cards__title">{name}</h2>
