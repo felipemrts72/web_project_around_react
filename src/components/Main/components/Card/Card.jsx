@@ -5,7 +5,7 @@ export default function Card(props) {
   const { handleOpenPopup } = props;
   const imageComponent = {
     title: false,
-    children: <ImagePopup card={(name, link)} />,
+    children: <ImagePopup card={props.card} />,
   };
 
   return (
@@ -18,8 +18,9 @@ export default function Card(props) {
         src={link}
         alt=""
         className="cards__image"
-        onClick={() => handleOpenPopup(imageComponent)}
-        // onClick={}
+        onClick={() => {
+          handleOpenPopup(imageComponent);
+        }}
       />
       <div className="cards__desc">
         <h2 className="cards__title">{name}</h2>

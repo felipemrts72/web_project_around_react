@@ -1,6 +1,5 @@
 export default function ImagePopup(props) {
-  const { name, link } = props;
-  // console.log(props);
+  const { name, link } = props.card;
 
   return (
     <>

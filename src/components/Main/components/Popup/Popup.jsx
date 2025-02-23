@@ -2,10 +2,12 @@ export default function Popup(props) {
   const { onClose, title, children } = props;
   return (
     <div className="popup">
-      <div className={`popup__content ${!title ? "popup__zoom" : ""}`}>
+      <div className="popup__content">
         <button
           aria-label="Close modal"
-          className="popup__close"
+          className={`popup__close ${
+            !title ? "popup__close_content_image" : ""
+          }`}
           type="button"
           onClick={onClose}
         />
