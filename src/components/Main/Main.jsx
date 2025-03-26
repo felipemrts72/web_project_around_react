@@ -82,14 +82,14 @@ function Main(props) {
         </div>
         <div className="content__profile-edit">
           <div className="content__wrap">
-            <h1 className="content__title">Jacques Costeau</h1>
+            <h1 className="content__title">{currentUser.name}</h1>
             <button
               className="content__edit-button"
               alt="Um botão com uma canela, simbolizando a edição!"
               onClick={() => onOpenPopup(editProfilePopup)}
             />
           </div>
-          <p className="content__subtitle">Explorador</p>
+          <p className="content__subtitle">{currentUser.about}</p>
         </div>
         <button
           className="content__add"
