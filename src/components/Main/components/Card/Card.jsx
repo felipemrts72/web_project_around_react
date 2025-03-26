@@ -1,4 +1,6 @@
 import ImagePopup from "../ImagePopup/ImagePopup";
+import { useContext } from "react";
+import { CurrentUserContext } from "../../../../contexts/CurrentUserContext";
 
 export default function Card(props) {
   const { name, link } = props.card;
@@ -7,6 +9,8 @@ export default function Card(props) {
     title: false,
     children: <ImagePopup card={props.card} />,
   };
+
+  const currentUser = useContext(CurrentUserContext);
 
   return (
     <li className="cards__item" key={props._id}>

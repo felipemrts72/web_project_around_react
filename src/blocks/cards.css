@@ -70,7 +70,7 @@
 .cards__like:hover {
   opacity: 0.6;
 }
-.cards__like_active {
+.cards__like_is-active {
   background-image: url(../images/active__liked.png);
 }
 
