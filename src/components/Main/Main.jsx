@@ -113,7 +113,6 @@ function Main() {
             handleOpenPopup={handleOpenPopup}
             onCardLike={handleCardLike}
             onCardDelete={handleCardDelete}
-            onCardDelete={handleCardDelete}
           />
         ))}
       </section>
