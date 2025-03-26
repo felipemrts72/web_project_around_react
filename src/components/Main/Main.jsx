@@ -24,12 +24,10 @@ function Main() {
   useEffect(() => {
     api.getData("cards").then((res) => {
       setCards(res);
-      console.log(res);
     });
   }, []);
 
   async function handleCardLike(card) {
-    // Verificar mais uma vez se esse cartão já foi curtido
     const isLiked = card.isLiked;
 
     // Enviar uma solicitação para a API e obter os dados do cartão atualizados
@@ -114,6 +112,7 @@ function Main() {
             card={card}
             handleOpenPopup={handleOpenPopup}
             onCardLike={handleCardLike}
+            onCardDelete={handleCardDelete}
             onCardDelete={handleCardDelete}
           />
         ))}
