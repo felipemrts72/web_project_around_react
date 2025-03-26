@@ -56,7 +56,7 @@
   white-space: nowrap;
   overflow: hidden;
 }
-.cards__like {
+.card__like-button {
   width: 22px;
   height: 22px;
   cursor: pointer;
@@ -67,10 +67,10 @@
   background-repeat: no-repeat;
 }
 
-.cards__like:hover {
+.card__like-button:hover {
   opacity: 0.6;
 }
-.cards__like_is-active {
+.card__like-button_is-active {
   background-image: url(../images/active__liked.png);
 }
 

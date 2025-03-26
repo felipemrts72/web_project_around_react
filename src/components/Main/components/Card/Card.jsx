@@ -1,22 +1,29 @@
 import ImagePopup from "../ImagePopup/ImagePopup";
-import { useContext } from "react";
-import { CurrentUserContext } from "../../../../contexts/CurrentUserContext";
 
 export default function Card(props) {
-  const { name, link } = props.card;
-  const { handleOpenPopup } = props;
+  const { name, link, isLiked } = props.card;
+  const { handleOpenPopup, onCardLike } = props;
   const imageComponent = {
     title: false,
     children: <ImagePopup card={props.card} />,
   };
 
-  const currentUser = useContext(CurrentUserContext);
+  const cardLikeButtonClassName = `card__like-button ${
+    isLiked ? "card__like-button_is-active" : ""
+  }`;
+
+  const handleLikeClick = (e) => {
+    onCardLike(e);
+  };
 
   return (
     <li className="cards__item" key={props._id}>
       <img
         alt="lixeira que representa que irá apagar o local selecionado"
         className="cards__trash"
+        onClick={() => {
+          handleLikeClick;
+        }}
       />
       <img
         src={link}
@@ -29,7 +36,7 @@ export default function Card(props) {
       <div className="cards__desc">
         <h2 className="cards__title">{name}</h2>
         <button
-          className="cards__like"
+          className={cardLikeButtonClassName}
           alt="Um botão com um coração, simbolizando o curtir!"
         />
       </div>

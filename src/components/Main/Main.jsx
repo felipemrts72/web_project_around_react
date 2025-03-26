@@ -28,6 +28,34 @@ function Main() {
     });
   }, []);
 
+  async function handleCardLike(card) {
+    // Verificar mais uma vez se esse cartão já foi curtido
+    const isLiked = card.isLiked;
+
+    // Enviar uma solicitação para a API e obter os dados do cartão atualizados
+    await api
+      .changeLikeCardStatus(card._id, !isLiked)
+      .then((newCard) => {
+        setCards((state) =>
+          state.map((currentCard) =>
+            currentCard._id === card._id ? newCard : currentCard
+          )
+        );
+      })
+      .catch((error) => console.error(error));
+  }
+
+  async function handleCardDelete(card) {
+    const id = card._id;
+
+    await api.then((res) => {
+      api.getData("cards").then((res) => {
+        res.filter((card) => (card._id = id));
+        setCards(res);
+      });
+    });
+  }
+
   function handleOpenPopup(popup) {
     setPopup(popup);
   }
@@ -66,7 +94,12 @@ function Main() {
       </div>
       <section className="cards">
         {cards.map((card) => (
-          <Card key={card._id} card={card} handleOpenPopup={handleOpenPopup} />
+          <Card
+            key={card._id}
+            card={card}
+            handleOpenPopup={handleOpenPopup}
+            onCardLike={handleCardLike}
+          />
         ))}
       </section>
       {popup && (
