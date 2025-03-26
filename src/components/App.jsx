@@ -28,6 +28,7 @@ function App() {
       `UPDATE ERRO - ${err}`;
     });
   };
+  //-------------------------------------------------
 
   const [popup, setPopup] = useState(null);
   function handleOpenPopup(popup) {
@@ -37,6 +38,7 @@ function App() {
   function handleClosePopup() {
     setPopup(null);
   }
+  //-------------------------------------------------
 
   const handleUpdateAvatar = (url) => {
     console.log(url);
@@ -50,7 +52,49 @@ function App() {
       `UPDATE ERRO - ${err}`;
     });
   };
+  //-------------------------------------------------
 
+  async function handleCardLike(card) {
+    const isLiked = card.isLiked;
+
+    // Enviar uma solicitação para a API e obter os dados do cartão atualizados
+    if (!isLiked) {
+      await api
+        .addLike(card._id)
+        .then((newCard) => {
+          setCards((state) =>
+            state.map((currentCard) =>
+              currentCard._id === card._id ? newCard : currentCard
+            )
+          );
+        })
+        .catch((error) => console.error(error));
+    } else {
+      await api
+        .removeLike(card._id)
+        .then((newCard) => {
+          setCards((state) =>
+            state.map((currentCard) =>
+              currentCard._id === card._id ? newCard : currentCard
+            )
+          );
+        })
+        .catch((error) => console.error(error));
+    }
+  }
+
+  async function handleCardDelete(card) {
+    await api
+      .deleteCard(card._id)
+      .then((res) => {
+        if (res.ok) {
+          setCards(
+            (prevCards) => prevCards.filter((item) => item._id !== card._id) //Atualizando os cartões retirando o id do cartão excluido
+          );
+        }
+      })
+      .catch((error) => console.error(error));
+  }
   return (
     <>
       <div className="page">
@@ -62,6 +106,8 @@ function App() {
             onOpenPopup={handleOpenPopup}
             onClosePopup={handleClosePopup}
             popup={popup}
+            onCardLike={handleCardLike}
+            onCardDelete={handleCardDelete}
           />
           <Footer />
         </CurrentUserContext.Provider>

@@ -9,7 +9,7 @@ import EditAvatar from "./components/Popup/components/EditAvatar/EditAvatar";
 import EditProfile from "./components/Popup/components/EditProfile/EditProfile";
 
 function Main(props) {
-  const { onOpenPopup, onClosePopup, popup } = props;
+  const { onOpenPopup, onClosePopup, popup, onCardLike, onCardDelete } = props;
   const newCardPopup = { title: "Novo cartão", children: <NewCard /> };
   const editAvatarPopup = { title: "Editar avatar", children: <EditAvatar /> };
   const editProfilePopup = {
@@ -26,48 +26,6 @@ function Main(props) {
       setCards(res);
     });
   }, []);
-
-  async function handleCardLike(card) {
-    const isLiked = card.isLiked;
-
-    // Enviar uma solicitação para a API e obter os dados do cartão atualizados
-    if (!isLiked) {
-      await api
-        .addLike(card._id)
-        .then((newCard) => {
-          setCards((state) =>
-            state.map((currentCard) =>
-              currentCard._id === card._id ? newCard : currentCard
-            )
-          );
-        })
-        .catch((error) => console.error(error));
-    } else {
-      await api
-        .removeLike(card._id)
-        .then((newCard) => {
-          setCards((state) =>
-            state.map((currentCard) =>
-              currentCard._id === card._id ? newCard : currentCard
-            )
-          );
-        })
-        .catch((error) => console.error(error));
-    }
-  }
-
-  async function handleCardDelete(card) {
-    await api
-      .deleteCard(card._id)
-      .then((res) => {
-        if (res.ok) {
-          setCards(
-            (prevCards) => prevCards.filter((item) => item._id !== card._id) //Atualizando os cartões retirando o id do cartão excluido
-          );
-        }
-      })
-      .catch((error) => console.error(error));
-  }
 
   return (
     <main className="content">
@@ -103,8 +61,8 @@ function Main(props) {
             key={card._id}
             card={card}
             handleOpenPopup={onOpenPopup}
-            onCardLike={handleCardLike}
-            onCardDelete={handleCardDelete}
+            onCardLike={onCardLike}
+            onCardDelete={onCardDelete}
           />
         ))}
       </section>
