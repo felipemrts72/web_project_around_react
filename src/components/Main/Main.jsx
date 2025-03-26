@@ -24,36 +24,42 @@ function Main() {
   useEffect(() => {
     api.getData("cards").then((res) => {
       setCards(res);
-      console.log(res);
     });
   }, []);
 
   async function handleCardLike(card) {
-    // Verificar mais uma vez se esse cartão já foi curtido
     const isLiked = card.isLiked;
 
-    // Enviar uma solicitação para a API e obter os dados do cartão atualizados
-    await api
-      .changeLikeCardStatus(card._id, !isLiked)
-      .then((newCard) => {
-        setCards((state) =>
-          state.map((currentCard) =>
-            currentCard._id === card._id ? newCard : currentCard
-          )
-        );
-      })
-      .catch((error) => console.error(error));
+    if (!isLiked) {
+      await api
+        .addLike(card._id)
+        .then((newCard) => {
+          setCards((state) =>
+            state.map((currentCard) =>
+              currentCard._id === card._id ? newCard : currentCard
+            )
+          );
+        })
+        .catch((error) => console.error(error));
+    } else {
+      await api
+        .removeLike(card._id)
+
+        .catch((error) => console.error(error));
+    }
   }
+  // Enviar uma solicitação para a API e obter os dados do cartão atualizados
 
   async function handleCardDelete(card) {
-    const id = card._id;
-
-    await api.then((res) => {
-      api.getData("cards").then((res) => {
-        res.filter((card) => (card._id = id));
-        setCards(res);
-      });
-    });
+    console.log(card);
+    await api
+      .deleteCard(card._id)
+      .then((res) => {
+        if (res.ok) {
+          setCards();
+        }
+      })
+      .catch((error) => console.error(error));
   }
 
   function handleOpenPopup(popup) {
@@ -99,6 +105,7 @@ function Main() {
             card={card}
             handleOpenPopup={handleOpenPopup}
             onCardLike={handleCardLike}
+            onCardDelete={handleCardDelete}
           />
         ))}
       </section>

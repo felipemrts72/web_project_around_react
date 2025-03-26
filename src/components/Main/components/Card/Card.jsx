@@ -2,7 +2,7 @@ import ImagePopup from "../ImagePopup/ImagePopup";
 
 export default function Card(props) {
   const { name, link, isLiked } = props.card;
-  const { handleOpenPopup, onCardLike } = props;
+  const { card, handleOpenPopup, onCardLike, onCardDelete } = props;
   const imageComponent = {
     title: false,
     children: <ImagePopup card={props.card} />,
@@ -12,8 +12,12 @@ export default function Card(props) {
     isLiked ? "card__like-button_is-active" : ""
   }`;
 
-  const handleLikeClick = (e) => {
-    onCardLike(e);
+  const handleLikeClick = (card) => {
+    onCardLike(card);
+  };
+
+  const handleDeleteClick = (card) => {
+    onCardDelete(card);
   };
 
   return (
@@ -22,7 +26,7 @@ export default function Card(props) {
         alt="lixeira que representa que irá apagar o local selecionado"
         className="cards__trash"
         onClick={() => {
-          handleLikeClick;
+          handleDeleteClick(card);
         }}
       />
       <img
@@ -38,6 +42,9 @@ export default function Card(props) {
         <button
           className={cardLikeButtonClassName}
           alt="Um botão com um coração, simbolizando o curtir!"
+          onClick={() => {
+            handleLikeClick(card);
+          }}
         />
       </div>
     </li>
