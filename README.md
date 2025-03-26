@@ -13,3 +13,6 @@ GITHUB Pages: https://felipemrts72.github.io/web_project_around/
 This project consists of a request made by the company TripleTen. It's a page that describes beautiful places across the USA.
 The project was initially made in pure JS, but an update was requested, but now in React - VITE.
 Code versioning via GIT was also used.
+
+V 1.0 O site foi atualizado para trazer diversos novos recursos do React. Há ainda muito espaço para melhorias.
+V 1.0 The site has been updated to bring several new React features. There is still a lot of room for improvement.
