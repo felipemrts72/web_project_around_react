@@ -28,6 +28,7 @@ function App() {
       `UPDATE ERRO - ${err}`;
     });
   };
+
   const [popup, setPopup] = useState(null);
   function handleOpenPopup(popup) {
     setPopup(popup);
@@ -36,10 +37,26 @@ function App() {
   function handleClosePopup() {
     setPopup(null);
   }
+
+  const handleUpdateAvatar = (url) => {
+    console.log(url);
+
+    (async () => {
+      await api.avatarEdit(url).then((newUser) => {
+        setCurrentUser(newUser);
+        handleClosePopup();
+      });
+    })().catch((err) => {
+      `UPDATE ERRO - ${err}`;
+    });
+  };
+
   return (
     <>
       <div className="page">
-        <CurrentUserContext.Provider value={{ currentUser, handleUpdateUser }}>
+        <CurrentUserContext.Provider
+          value={{ currentUser, handleUpdateUser, handleUpdateAvatar }}
+        >
           <Header />
           <Main
             onOpenPopup={handleOpenPopup}

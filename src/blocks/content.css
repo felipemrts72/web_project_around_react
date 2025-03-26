@@ -17,7 +17,6 @@
   object-fit: cover;
   width: 120px;
   max-height: 120px;
-  content: url(../images/avatar_img.jpg);
 }
 
 .content__avatar:hover {

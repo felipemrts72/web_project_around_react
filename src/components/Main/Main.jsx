@@ -74,7 +74,7 @@ function Main(props) {
       <div className="content__profile">
         <div className="content__avatar-edit">
           <img
-            src="#"
+            src={currentUser.avatar}
             alt="Foto de perfil do usuário"
             className="content__avatar"
             onClick={() => onOpenPopup(editAvatarPopup)}
