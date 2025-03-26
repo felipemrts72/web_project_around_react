@@ -53,6 +53,13 @@ function App() {
     });
   };
   //-------------------------------------------------
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    api.getData("cards").then((res) => {
+      setCards(res);
+    });
+  }, []);
 
   async function handleCardLike(card) {
     const isLiked = card.isLiked;
@@ -108,6 +115,7 @@ function App() {
             popup={popup}
             onCardLike={handleCardLike}
             onCardDelete={handleCardDelete}
+            cards={cards}
           />
           <Footer />
         </CurrentUserContext.Provider>

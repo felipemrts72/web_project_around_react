@@ -9,7 +9,8 @@ import EditAvatar from "./components/Popup/components/EditAvatar/EditAvatar";
 import EditProfile from "./components/Popup/components/EditProfile/EditProfile";
 
 function Main(props) {
-  const { onOpenPopup, onClosePopup, popup, onCardLike, onCardDelete } = props;
+  const { onOpenPopup, onClosePopup, popup, onCardLike, onCardDelete, cards } =
+    props;
   const newCardPopup = { title: "Novo cartão", children: <NewCard /> };
   const editAvatarPopup = { title: "Editar avatar", children: <EditAvatar /> };
   const editProfilePopup = {
@@ -18,14 +19,6 @@ function Main(props) {
   };
 
   const { currentUser } = useContext(CurrentUserContext);
-
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    api.getData("cards").then((res) => {
-      setCards(res);
-    });
-  }, []);
 
   return (
     <main className="content">
