@@ -18,12 +18,34 @@ function App() {
     })();
   }, []);
 
+  const handleUpdateUser = (data) => {
+    (async () => {
+      await api.profileEdit(data).then((newUser) => {
+        setCurrentUser(newUser);
+        handleClosePopup();
+      });
+    })().catch((err) => {
+      `UPDATE ERRO - ${err}`;
+    });
+  };
+  const [popup, setPopup] = useState(null);
+  function handleOpenPopup(popup) {
+    setPopup(popup);
+  }
+
+  function handleClosePopup() {
+    setPopup(null);
+  }
   return (
     <>
       <div className="page">
-        <CurrentUserContext.Provider value={currentUser}>
+        <CurrentUserContext.Provider value={{ currentUser, handleUpdateUser }}>
           <Header />
-          <Main />
+          <Main
+            onOpenPopup={handleOpenPopup}
+            onClosePopup={handleClosePopup}
+            popup={popup}
+          />
           <Footer />
         </CurrentUserContext.Provider>
       </div>
