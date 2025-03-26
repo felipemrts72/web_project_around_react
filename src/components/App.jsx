@@ -28,7 +28,7 @@ function App() {
       `UPDATE ERRO - ${err}`;
     });
   };
-  //-------------------------------------------------
+  //---------------------------- POPUP ------------------------------
 
   const [popup, setPopup] = useState(null);
   function handleOpenPopup(popup) {
@@ -38,7 +38,7 @@ function App() {
   function handleClosePopup() {
     setPopup(null);
   }
-  //-------------------------------------------------
+  //---------------------- AVATAR ---------------------------------
 
   const handleUpdateAvatar = (url) => {
     console.log(url);
@@ -52,12 +52,13 @@ function App() {
       `UPDATE ERRO - ${err}`;
     });
   };
-  //-------------------------------------------------
+  //--------------------------- CARDS ----------------------------------------
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
     api.getData("cards").then((res) => {
       setCards(res);
+      console.log(res);
     });
   }, []);
 
@@ -75,7 +76,7 @@ function App() {
             )
           );
         })
-        .catch((error) => console.error(error));
+        .catch((error) => console.error(`LIKE CARD - ${error}`));
     } else {
       await api
         .removeLike(card._id)
@@ -86,7 +87,7 @@ function App() {
             )
           );
         })
-        .catch((error) => console.error(error));
+        .catch((error) => console.error(`UNLIKE CARD - ${error}`));
     }
   }
 
@@ -100,13 +101,28 @@ function App() {
           );
         }
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(`DELETE CARD - ${error}`));
+  }
+
+  async function handleAddPlaceSubmit(card) {
+    await api
+      .sendCard(card)
+      .then((newCard) => {
+        setCards([newCard, ...cards]);
+        handleClosePopup();
+      })
+      .catch((error) => console.error(`SUBMIT CARD - ${error}`));
   }
   return (
     <>
       <div className="page">
         <CurrentUserContext.Provider
-          value={{ currentUser, handleUpdateUser, handleUpdateAvatar }}
+          value={{
+            currentUser,
+            handleUpdateUser,
+            handleUpdateAvatar,
+            handleAddPlaceSubmit,
+          }}
         >
           <Header />
           <Main
